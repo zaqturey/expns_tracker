@@ -19,8 +19,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  String titleInput;
-  String amountInput;
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,13 +44,11 @@ class _HomeState extends State<Home> {
                       children: <Widget>[
                         TextField(
                           decoration: InputDecoration(labelText: 'Title'),
-                          onChanged: (inputValue) {
-                            titleInput = inputValue;
-                          },
+                          controller: titleController,
                         ),
                         TextField(
                           decoration: InputDecoration(labelText: 'Amount'),
-                          onChanged: (inputValue) => amountInput = inputValue,
+                          controller: amountController,
                         ),
                         RaisedButton(
                           child: Text(
@@ -59,8 +57,8 @@ class _HomeState extends State<Home> {
                           ),
                           highlightColor: Colors.pink[100],
                           onPressed: () {
-                            print(titleInput);
-                            print(amountInput);
+                            print(titleController.text);
+                            print(amountController.text);
                           },
                         ),
                       ],

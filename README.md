@@ -12,6 +12,15 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> TextEditingController: Implemented 'TextEditingController' for 'title' and 'amount' instead of String variables.
+(Note:  a TextEditingController gives you the final value once all the keystrokes are done instead on value of each keystroke.)
+- main.dart >> Removed String variables i.e. 'titleInput' and 'amountInput'
+- main.dart >> Added two TextEditingControllers i.e. 'titleController' and 'amountController'
+- main.dart >> Removed 'onChange()' functions from the to respective TextField for 'title' and 'amount'
+- main.dart >> Assigned the TextEditingControllers to respective TextField i.e. 'titleController' and 'amountController'
+- main.dart >> Updated 'onPressed' function of 'RaisedButton' to use print text from 'titleController' and 'amountController'.
+
+
 >> Initial Commit: Implemented 'Card' widget that has TextFields for 'Title' and 'Amount' and a 'RaisedButton'
 - main.dart >> Scaffold has implementation for 'appbar' and 'body' widgets
 - main.dart >> 'body' implements 'SafeArea' that implements a 'Container' that implements a 'Card' as a child.
