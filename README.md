@@ -12,6 +12,13 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Added a new 'widgets' package (for separately managing the custom widgets)  
+- main.dart >> removed the 'card widget' (along with its contents) specific to add a new transaction (moved to a separate file)
+- new_transaction.dart >> a new file that extends a 'stless widget' and returns a "card widget" to add a new transaction.
+- main.dart >> Now instead of the 'card widget', a function call i.e 'NewTransaction()' has been added.
+- main.dart >> Refactor > Now Home class extends a 'stless' instead of 'stfull' widget as we are not setting/rebuilding any widget. 
+
+
 >> TextEditingController: Implemented 'TextEditingController' for 'title' and 'amount' instead of String variables.
 (Note:  a TextEditingController gives you the final value once all the keystrokes are done instead on value of each keystroke.)
 - main.dart >> Removed String variables i.e. 'titleInput' and 'amountInput'
