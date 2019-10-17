@@ -12,6 +12,16 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Added separate widget i.e. 'PopulateTransactions()' to display the list of Transactions
+- models >> New package > this package will contain the implementation for generic/custom classes  
+- transaction.dart >> New file > It implements a model/blueprint for a single Transaction
+- transaction_item.dart >> New file > Takes three parameters and return a 'Card' widget that Renders the contents for a single Transaction.
+- transaction_list.dart >> New file > Takes 'List<Transaction>' as parameter and return an 'Expanded' widget that Renders a ListView.
+- populate_transactions.dart >> New file > Provide/return a 'Container' widget that Renders 'TransactionList' (passing the List<Transaction> as argument to it. 
+- main.dart >> Refactored >> Replaced the direct rendering of Widgets with 'NewTransaction()' and 'PopulateTransactions()' as children widget to the 'Column' widget.
+Note: 'transaction_list.dart' >> wrapping the ListView in an 'Expanded' is not good solution as it may throw an 'RenderFlex overflowed' error upon rotation.
+
+
 >> Added a new 'widgets' package (for separately managing the custom widgets)  
 - main.dart >> removed the 'card widget' (along with its contents) specific to add a new transaction (moved to a separate file)
 - new_transaction.dart >> a new file that extends a 'stless widget' and returns a "card widget" to add a new transaction.

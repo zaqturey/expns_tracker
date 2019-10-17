@@ -1,5 +1,7 @@
-import 'package:expns_tracker/widgets/new_transaction.dart';
 import 'package:flutter/material.dart';
+
+import './widgets/new_transaction.dart';
+import './widgets/populate_transactions.dart';
 
 void main() => runApp(MyApp());
 
@@ -31,6 +33,7 @@ class Home extends StatelessWidget {
               ),
             ),
             NewTransaction(),
+            PopulateTransactions(),
           ],
         ),
       ),
