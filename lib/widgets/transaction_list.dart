@@ -5,27 +5,31 @@ import '../models/transaction.dart';
 
 /*
 Class Objective:
-  1. Constructor of this class i.e. 'TransactionList' accepts a List of <Transaction> and returns a 'ListView' widget
-  2. The 'ListView' iterate through each item in the List and then Renders its content using 'TransactionItem'
+  1. Constructor of this class i.e. 'TransactionList' accepts a List of <Transaction> and returns a
+  2. 'Container' widget that in-turn contains a 'ListView' which
+  iterate through each item in the List and then Renders its content using 'TransactionItem'
 */
 
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
 
-  TransactionList({@required this.transactions});
+  TransactionList(this.transactions);
 
   @override
   Widget build(BuildContext context) {
     // TODO: Use ListView Builder to avoid 'RenderFlex overflowed' error
-    return Expanded(
-      child: ListView(
-        children: transactions.map((txn) {
+    return Container(
+      // 'double.maxFinite' will allow to take the max available height to the Container
+      height: double.maxFinite,
+      child: ListView.builder(
+        itemBuilder: (ctx, index) {
           return TransactionItem(
-            txnTitle: txn.title,
-            txnAmount: txn.amount,
-            txnDate: txn.date,
+            txnTitle: transactions[index].title,
+            txnAmount: transactions[index].amount,
+            txnDate: transactions[index].date,
           );
-        }).toList(),
+        },
+        itemCount: transactions.length,
       ),
     );
   }

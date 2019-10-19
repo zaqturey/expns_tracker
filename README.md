@@ -12,6 +12,17 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Implemented 'setState()', 'ListView.builder', SingleChildScrollView, 'double.maxFinite' 
+- populate_transactions.dart >> Refactored > Following has bee implemented i.e.
+-- 1. 'PopulateTransactions' now extends a stfull widget instead of a stless widget.
+-- 2. Now it returns a 'Container' widget renders two custom widget i.e. 
+--- 'NewTransaction(_addNewTransaction)' and 'TransactionList(_populateTransactions)'
+-- 3. A new function i.e. '_addNewTransaction()' which adds a new Transaction Object to the List and call 'setState()'
+- main.dart >>  Refactored > Now implements a SingleChildScrollView.
+- main.dart >> a new 'Container' show 'chart' text has been added.
+- transaction_list.dart >> Refactored > Now 'Container' can take all the remaining height.
+
+
 >> Added separate widget i.e. 'PopulateTransactions()' to display the list of Transactions
 - models >> New package > this package will contain the implementation for generic/custom classes  
 - transaction.dart >> New file > It implements a model/blueprint for a single Transaction

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import './widgets/new_transaction.dart';
 import './widgets/populate_transactions.dart';
 
 void main() => runApp(MyApp());
@@ -24,17 +23,21 @@ class Home extends StatelessWidget {
         title: Text('Expns Tracker'),
       ),
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Container(
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Container(
+                width: double.infinity,
+                child: Card(
+                  elevation: 5,
+                  color: Colors.blue,
+                  child: Text("chart"),
+                ),
               ),
-            ),
-            NewTransaction(),
-            PopulateTransactions(),
-          ],
+              PopulateTransactions(),
+            ],
+          ),
         ),
       ),
     );

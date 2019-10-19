@@ -1,35 +1,44 @@
-import 'package:expns_tracker/models/transaction.dart';
-import 'package:expns_tracker/widgets/transaction_list.dart';
 import 'package:flutter/material.dart';
+
+import './new_transaction.dart';
+import './transaction_list.dart';
+import '../models/transaction.dart';
 
 /*
 Class Objective:
-  1. Provide/return a 'Container' widget that has List of all transactions added by the User.
-  2. It does so by creating/implementing an object of 'TransactionList' (and passing the 'List<Transaction>' as an argument to it)
-Note: As of now, hard coded values has been added to the list, which will be replaced by the actual 'Transaction' added by the user.
+  1. Provide/return a 'Container' widget renders two custom widgets i.e.
+  1.1. NewTransaction - this renders a 'Card' widget that facilitates user to add a new Transaction.
+  1.2  TransactionList - this renders a ListView Builder that displays all the Transactions in the List
+  2. Implement a new method e.g. '_addNewTransaction' that performs the following i.e.
+  2.1. create a new object of 'Transaction' class
+  2.2. Add that 'Transaction' object to the '_populateTransactions' List
+  2.3 Call the 'setState()' method, so that, updated '_populateTransactions' List gets rendered on the UI.
 */
-class PopulateTransactions extends StatelessWidget {
-  // TODO: remove the hard coded values from the List
-  // Creating a List of Transaction type
-  final List<Transaction> _populateTransactions = [
-    Transaction(id: 't1', title: 'Buy Dinner', amount: 152.99, date: DateTime.now()),
-    Transaction(id: 't2', title: 'Office Shirts', amount: 279.00, date: DateTime.now()),
-    Transaction(id: 't3', title: 'Iphone 11', amount: 1099.00, date: DateTime.now()),
-    Transaction(id: 't4', title: 'TFL', amount: 329.29, date: DateTime.now()),
-    Transaction(id: 't5', title: 'Air India', amount: 2158.55, date: DateTime.now()),
-    Transaction(id: 't6', title: 'Buy Dinner', amount: 152.99, date: DateTime.now()),
-    Transaction(id: 't7', title: 'Office Shirts', amount: 279.00, date: DateTime.now()),
-    Transaction(id: 't8', title: 'Iphone 11', amount: 1099.00, date: DateTime.now()),
-    Transaction(id: 't9', title: 'TFL', amount: 329.29, date: DateTime.now()),
-    Transaction(id: 't10', title: 'Air India', amount: 2158.55, date: DateTime.now()),
-  ];
+class PopulateTransactions extends StatefulWidget {
+  @override
+  _PopulateTransactionsState createState() => _PopulateTransactionsState();
+}
 
-  // TODO: Implement a new function that add Transaction to the '_populateTransactions'
+class _PopulateTransactionsState extends State<PopulateTransactions> {
+  // Creating a List of Transaction type
+  final List<Transaction> _populateTransactions = [];
+
+  void _addNewTransaction(String txnTitle, double txnAmount) {
+    final newTxn = Transaction(id: DateTime.now().toString(), title: txnTitle, amount: txnAmount, date: DateTime.now());
+
+    setState(() {
+      _populateTransactions.add(newTxn);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: TransactionList(transactions: _populateTransactions),
+    return Column(
+      children: <Widget>[
+        //Creating Object of 'NewTransaction' and passing the Address of '_addNewTransaction' as argument
+        NewTransaction(_addNewTransaction),
+        TransactionList(_populateTransactions),
+      ],
     );
   }
 }
