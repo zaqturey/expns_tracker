@@ -12,17 +12,25 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Refactoring - Bug Fix for 'onSubmitted' and used 'toStringAsFixed' to display data till 2 decimal places. 
+- new_transaction.dart >> Refactored > Following has been fixed i.e.
+-- 1. For 'onSubmitted' to work, the corresponding function must be called and not just the function reference i.e.
+-- it should be 'onSubmitted: (_) => submitData()' and not 'onSubmitted: (_) => submitData'
+-- This is because, we are calling an anonymous function and inside that we must call the function and not reference.
+- transaction_item.dart >> applied ''toStringAsFixed' on 'txnAmount' to display data till 2 decimal places.
+
+
 >> Implemented 'keyboardType', 'onSubmitted' for TextFields, Added 'submitData' as a generic function.
-- new_transaction.dart >> Refactored > Following has bee implemented i.e.
+- new_transaction.dart >> Refactored > Following has been implemented i.e.
 -- 1. Added 'keyboardType' and 'onSubmitted' for TextFields
 -- 2. Moved 'addTxn()' to a separate function i.e. 'submitData', so  that it can be called from 'onSubmitted' as well.
--- 3. Updated implementation of 'addTxn()' i.e now it uses values from 'TextContollers' rather directly using them.
+-- 3. Updated implementation of 'addTxn()' i.e now it uses values from 'TextControllers' rather directly using them.
 -- 3. Now 'submitData' is called from 'onPressed' and 'onSubmitted'.
 -- 4. a validation check for invalid/incorrect values has been added in the 'submitData' function.
 
 
 >> Implemented 'setState()', 'ListView.builder', SingleChildScrollView, 'double.maxFinite' 
-- populate_transactions.dart >> Refactored > Following has bee implemented i.e.
+- populate_transactions.dart >> Refactored > Following has been implemented i.e.
 -- 1. 'PopulateTransactions' now extends a stfull widget instead of a stless widget.
 -- 2. Now it returns a 'Container' widget renders two custom widget i.e. 
 --- 'NewTransaction(_addNewTransaction)' and 'TransactionList(_populateTransactions)'

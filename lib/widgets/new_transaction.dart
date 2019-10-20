@@ -42,13 +42,13 @@ class NewTransaction extends StatelessWidget {
               // When calling 'onSubmitted', we need to pass the Final/Changed value to the called/anonymous Function
               // e.g. 'submitData', but since we will not be using that value, we can use an '_', which means though
               // 'submitData' accepts a 'String' parameter, but we wouldn't be using it.
-              onSubmitted: (_) => submitData,
+              onSubmitted: (_) => submitData(),
             ),
             TextField(
               decoration: InputDecoration(labelText: 'Amount'),
               keyboardType: TextInputType.numberWithOptions(decimal: true),
               controller: amountController,
-              onSubmitted: (_) => submitData,
+              onSubmitted: (_) => submitData(),
             ),
             RaisedButton(
               child: Text(

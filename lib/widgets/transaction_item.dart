@@ -32,8 +32,8 @@ class TransactionItem extends StatelessWidget {
             ),
             padding: EdgeInsets.all(10),
             child: Text(
-              '\$$txnAmount',
-//              '\$${transactions[index].amount}',
+              // Displaying Amount for on 2 decimal places
+              '\$${txnAmount.toStringAsFixed(2)}',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
@@ -46,7 +46,6 @@ class TransactionItem extends StatelessWidget {
             children: <Widget>[
               Text(
                 txnTitle,
-//                transactions[index].title,
                 style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
