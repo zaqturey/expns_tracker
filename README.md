@@ -12,6 +12,13 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Refactored 'new_transaction.dart' to avoid data getting lost while switching between 'TextEditingController's  
+- 'new_transaction.dart' >> NewTransaction now extends a stfull widget instead of a stless widget.   
+- Variable 'addTxn' Declaration is kept in the 'Widget class' (as the class constructor is also defined here) 
+-- and not in the 'state' class, so that class object can accepts the passed in 'Function Variable'
+-- Call to actual 'addTxn' function is done using the 'Widget' property, that allow to access data of 'Widget Class'  
+-- inside the 'State Class'.
+
 >> Cleared 'TextEditingController's after addTxn is called  
 - new_transaction.dart >> Cleared 'titleController' and 'amountController' after addTxn is called.  
 

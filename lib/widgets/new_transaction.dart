@@ -6,12 +6,19 @@ Class Objective:
   2. Also implements a 'RaisedButton' that (as of now) prints the entered values when 'onPressed' is called/triggered.
 
 */
-class NewTransaction extends StatelessWidget {
+class NewTransaction extends StatefulWidget {
   final Function addTxn;
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
 
   NewTransaction(this.addTxn);
+
+  @override
+  _NewTransactionState createState() => _NewTransactionState();
+}
+
+class _NewTransactionState extends State<NewTransaction> {
+  final titleController = TextEditingController();
+
+  final amountController = TextEditingController();
 
   void submitData() {
     // Fetching the values from the controllers
@@ -22,7 +29,7 @@ class NewTransaction extends StatelessWidget {
     if (enteredTitle.isEmpty || enteredAmount <= 0) {
       return;
     }
-    addTxn(enteredTitle, enteredAmount);
+    widget.addTxn(enteredTitle, enteredAmount);
     // Clearing the 'titleController' and 'amountController' once 'addTxn' is called
     titleController.clear();
     amountController.clear();
