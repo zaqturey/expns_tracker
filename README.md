@@ -12,8 +12,13 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Added 'IconButton' and 'FloatingActionButton'  
+- main.dart >> New 'IconButton' has been added in the AppBar.  
+- main.dart >> New 'FloatingActionButton' has been added in the Scaffold area.  
+
+
 >> Refactoring - Bug Fix for 'onSubmitted' and used 'toStringAsFixed' to display data till 2 decimal places. 
-- new_transaction.dart >> Refactored > Following has been fixed i.e.
+- new_transaction.dart >> Refactored > Following has been fixed i.e.  
 -- 1. For 'onSubmitted' to work, the corresponding function must be called and not just the function reference i.e.
 -- it should be 'onSubmitted: (_) => submitData()' and not 'onSubmitted: (_) => submitData'
 -- This is because, we are calling an anonymous function and inside that we must call the function and not reference.
