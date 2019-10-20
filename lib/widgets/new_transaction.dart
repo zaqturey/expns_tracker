@@ -22,8 +22,10 @@ class NewTransaction extends StatelessWidget {
     if (enteredTitle.isEmpty || enteredAmount <= 0) {
       return;
     }
-
     addTxn(enteredTitle, enteredAmount);
+    // Clearing the 'titleController' and 'amountController' once 'addTxn' is called
+    titleController.clear();
+    amountController.clear();
   }
 
   @override
