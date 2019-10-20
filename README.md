@@ -12,6 +12,18 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Implemented 'showModalBottomSheet' for adding a new Transaction, and refactored the corresponding logic
+- main.dart >> Following has been implemented i.e.
+-- 'Home' class now extends 'StatefulWidget' instead of 'StatelessWidget'  
+-- A new method 'startAddNewTransaction' has been implemented to perform the following i.e.  
+--- to display a 'showModalBottomSheet' that returns/renders the 'NewTransaction' Widget to add a New Transaction.  
+--- '_addNewTransaction()' method has been moved from 'populate_transactions.dart' to 'main.dart'  
+-- Call to 'NewTransaction(_addNewTransaction)' has been moved inside '_startAddNewTransaction' from 'populate_transactions.dart'  
+-- Call to 'TransactionList(_populateTransactions)' has been replaced with 'PopulateTransactions()'  
+-- 'onPressed()' methods for 'IconButton' and 'FloatingActionButton' has been updated to call '_startAddNewTransaction(context)'  
+- populate_transactions.dart >> has been deleted, as all its code is moved to 'Main.dart' to support 'showModalBottomSheet'  
+
+
 >> Added 'IconButton' and 'FloatingActionButton'  
 - main.dart >> New 'IconButton' has been added in the AppBar.  
 - main.dart >> New 'FloatingActionButton' has been added in the Scaffold area.  

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
-import './widgets/populate_transactions.dart';
+import './models/transaction.dart';
+import './widgets/new_transaction.dart';
+import './widgets/transaction_list.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +17,30 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class Home extends StatelessWidget {
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  final List<Transaction> _populateTransactions = [];
+
+  void _addNewTransaction(String txnTitle, double txnAmount) {
+    final newTxn = Transaction(id: DateTime.now().toString(), title: txnTitle, amount: txnAmount, date: DateTime.now());
+
+    setState(() {
+      _populateTransactions.add(newTxn);
+    });
+  }
+
+  void _startAddNewTransaction(BuildContext ctx) {
+    showModalBottomSheet(
+        context: ctx,
+        builder: (_) {
+          return NewTransaction(_addNewTransaction);
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +49,7 @@ class Home extends StatelessWidget {
         actions: <Widget>[
           IconButton(
             icon: Icon(Icons.add),
-            onPressed: () {},
+            onPressed: () => _startAddNewTransaction(context),
           ),
         ],
       ),
@@ -41,7 +66,8 @@ class Home extends StatelessWidget {
                   child: Text("chart"),
                 ),
               ),
-              PopulateTransactions(),
+              TransactionList(_populateTransactions),
+              // PopulateTransactions(),
             ],
           ),
         ),
@@ -49,7 +75,7 @@ class Home extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () => _startAddNewTransaction(context),
       ),
     );
   }
