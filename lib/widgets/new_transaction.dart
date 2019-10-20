@@ -13,6 +13,19 @@ class NewTransaction extends StatelessWidget {
 
   NewTransaction(this.addTxn);
 
+  void submitData() {
+    // Fetching the values from the controllers
+    final enteredTitle = titleController.text;
+    final enteredAmount = double.parse(amountController.text);
+
+    // Checking that correct values are present in the TextFields, else exit without performing 'addTxn'
+    if (enteredTitle.isEmpty || enteredAmount <= 0) {
+      return;
+    }
+
+    addTxn(enteredTitle, enteredAmount);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -24,11 +37,18 @@ class NewTransaction extends StatelessWidget {
           children: <Widget>[
             TextField(
               decoration: InputDecoration(labelText: 'Title'),
+              keyboardType: TextInputType.text,
               controller: titleController,
+              // When calling 'onSubmitted', we need to pass the Final/Changed value to the called/anonymous Function
+              // e.g. 'submitData', but since we will not be using that value, we can use an '_', which means though
+              // 'submitData' accepts a 'String' parameter, but we wouldn't be using it.
+              onSubmitted: (_) => submitData,
             ),
             TextField(
               decoration: InputDecoration(labelText: 'Amount'),
+              keyboardType: TextInputType.numberWithOptions(decimal: true),
               controller: amountController,
+              onSubmitted: (_) => submitData,
             ),
             RaisedButton(
               child: Text(
@@ -36,13 +56,7 @@ class NewTransaction extends StatelessWidget {
                 style: TextStyle(color: Colors.blue.shade500),
               ),
               highlightColor: Colors.pink[100],
-              onPressed: () {
-                // Calling the passed in Function with arguments
-                addTxn(
-                  titleController.text,
-                  double.parse(amountController.text),
-                );
-              },
+              onPressed: submitData,
             ),
           ],
         ),

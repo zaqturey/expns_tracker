@@ -12,6 +12,15 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Implemented 'keyboardType', 'onSubmitted' for TextFields, Added 'submitData' as a generic function.
+- new_transaction.dart >> Refactored > Following has bee implemented i.e.
+-- 1. Added 'keyboardType' and 'onSubmitted' for TextFields
+-- 2. Moved 'addTxn()' to a separate function i.e. 'submitData', so  that it can be called from 'onSubmitted' as well.
+-- 3. Updated implementation of 'addTxn()' i.e now it uses values from 'TextContollers' rather directly using them.
+-- 3. Now 'submitData' is called from 'onPressed' and 'onSubmitted'.
+-- 4. a validation check for invalid/incorrect values has been added in the 'submitData' function.
+
+
 >> Implemented 'setState()', 'ListView.builder', SingleChildScrollView, 'double.maxFinite' 
 - populate_transactions.dart >> Refactored > Following has bee implemented i.e.
 -- 1. 'PopulateTransactions' now extends a stfull widget instead of a stless widget.
