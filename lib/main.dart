@@ -11,7 +11,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Expns Tracker',
-      theme: ThemeData.light(),
+      theme: ThemeData(
+        primarySwatch: Colors.pink,
+        accentColor: Colors.orangeAccent,
+      ),
       home: Home(),
     );
   }
@@ -45,6 +48,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.red,
         title: Text('Expns Tracker'),
         actions: <Widget>[
           IconButton(

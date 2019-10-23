@@ -33,6 +33,9 @@ class _NewTransactionState extends State<NewTransaction> {
     // Clearing the 'titleController' and 'amountController' once 'addTxn' is called
     titleController.clear();
     amountController.clear();
+
+    // Closing the top most window i.e. 'showModalBottomSheet' in this case.
+    Navigator.of(context).pop();
   }
 
   @override

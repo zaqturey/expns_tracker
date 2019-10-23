@@ -12,6 +12,13 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Implemented 'theme' for the app, and applied it theme to the Widgets using 'BuildContext'
+- 'new_transaction.dart' >> theme widget has been added and used 'primarySwatch' and 'accentColor' properties.  
+- 'transaction_item.dart' >>  Applied theme to Text widget displaying the 'txnAmount'
+
+>> Refactored 'new_transaction.dart' to avoid data getting lost while switching between 'TextEditingController's  
+- 'new_transaction.dart' >> NewTransaction now extends a stfull widget instead of a stless widget.  
+
 >> Refactored 'new_transaction.dart' to avoid data getting lost while switching between 'TextEditingController's  
 - 'new_transaction.dart' >> NewTransaction now extends a stfull widget instead of a stless widget.   
 - Variable 'addTxn' Declaration is kept in the 'Widget class' (as the class constructor is also defined here) 
