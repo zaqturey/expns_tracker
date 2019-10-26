@@ -53,6 +53,13 @@ class _HomeState extends State<Home> {
         });
   }
 
+  // Getter method that (using the '_populateTransactions') returns a list of 'Transaction' that not older than seven days
+  List<Transaction> get _recentTransactions {
+    return _populateTransactions.where((txn) {
+      return txn.date.isAfter(DateTime.now().subtract(Duration(days: 7)));
+    }).toList();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

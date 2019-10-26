@@ -12,6 +12,11 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Added a new getter method i.e. '_recentTransactions' returns a list of 'Transaction' that not older than seven days
+- main.dart >> a new getter method i.e. '_recentTransactions' is added that (using the '_populateTransactions')  
+-- returns a list of 'Transaction' that not older than seven days
+
+
 >> Added 'assets/images' folder, added a new image, added logic to display it if there is no data in 'transactions' List.   
 - assets/images >> added a new folder i.e. 'images' for local picture storage  
 - assets/images >> added a new 'no_txn_available.png' images  
