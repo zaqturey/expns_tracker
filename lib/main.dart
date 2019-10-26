@@ -16,16 +16,13 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.orangeAccent,
         fontFamily: 'OpenSans',
         // adding a 'title' specific 'textTheme' that can be used across the entire app for title texts
-        textTheme: ThemeData
-            .light()
-            .textTheme
-            .copyWith(
-          title: TextStyle(
-            fontFamily: 'Quicksand',
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-          ),
-        ),
+        textTheme: ThemeData.light().textTheme.copyWith(
+              title: TextStyle(
+                fontFamily: 'Quicksand',
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
       ),
       home: Home(),
     );

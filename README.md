@@ -12,11 +12,18 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Added 'assets/images' folder, added a new image, added logic to display it if there is no data in 'transactions' List.   
+- assets/images >> added a new folder i.e. 'images' for local picture storage  
+- assets/images >> added a new 'no_txn_available.png' images  
+- pubspec.yaml >> Added/Uncommented 'assets' section and added relative path for the 'no_txn_available.png'  
+- transaction_list.dart >> Applied 'ternary-operator' to display 'no_txn_available.png' in case no data is available.  
+
+
 >> Added 'assets/fonts' folder and added a new font family to it. Also added a generic text style for 'title' and applied it.
 - assets >> added a new folder i.e. 'assets' at root level.
-- assests/fonts >> added a new folder i.e. 'fonts' to store different font files
-- assests/fonts/open-sans >> Downloaded a new font from 'fonts.google.com', extracted it ttf files and stored in this folder
-- pubspec.yaml >> Uncommented 'fonts' section and added different variants for 'OpenSans' and 'Quicksand' 
+- assets/fonts >> added a new folder i.e. 'fonts' to store different font files
+- assets/fonts/open-sans >> Downloaded a new font from 'fonts.google.com', extracted it ttf files and stored in this folder
+- pubspec.yaml >> Added/Uncommented 'fonts' section and added different variants for 'OpenSans' and 'Quicksand' 
 - main.dart >> updated 'theme' i.e added 'Quicksand' as 'fontfamily' to 'ThemeData'
 - main.dart >> added a 'title' specific 'textTheme' that can be used across the entire app for title texts
 - 'transaction_item.dart' >>  for 'txnTitle' replaced the custom 'style' properties with   

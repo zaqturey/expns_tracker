@@ -6,8 +6,9 @@ import '../models/transaction.dart';
 /*
 Class Objective:
   1. Constructor of this class i.e. 'TransactionList' accepts a List of <Transaction> and returns a
-  2. 'Container' widget that in-turn contains a 'ListView' which
-  iterate through each item in the List and then Renders its content using 'TransactionItem'
+  2. 'Container' widget that in-turn checks if 'No Data' is available in the 'transactions' List:
+  2.1. Renders an image, otherwise
+  2.2. Iterate through each item in the List and Render its content using 'TransactionItem'
 */
 
 class TransactionList extends StatelessWidget {
@@ -21,7 +22,21 @@ class TransactionList extends StatelessWidget {
     return Container(
       // 'double.maxFinite' will allow to take the max available height to the Container
       height: double.maxFinite,
-      child: ListView.builder(
+      child: transactions.isEmpty
+          ? Column(
+        children: <Widget>[
+          Text(
+            'No Transaction is added yet!',
+            style: Theme
+                .of(context)
+                .textTheme
+                .title,
+          ),
+          SizedBox(height: 10),
+          Image.asset('assets/images/no_txn_available.png'),
+        ],
+      )
+          : ListView.builder(
         itemBuilder: (ctx, index) {
           return TransactionItem(
             txnTitle: transactions[index].title,

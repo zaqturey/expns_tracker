@@ -37,9 +37,7 @@ class TransactionItem extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
-                color: Theme
-                    .of(context)
-                    .primaryColor,
+                color: Theme.of(context).primaryColor,
               ),
             ),
           ),
@@ -48,10 +46,7 @@ class TransactionItem extends StatelessWidget {
             children: <Widget>[
               Text(
                 txnTitle,
-                style: Theme
-                    .of(context)
-                    .textTheme
-                    .title,
+                style: Theme.of(context).textTheme.title,
               ),
               Text(
                 DateFormat.yMMMd().format(txnDate),
