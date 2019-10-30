@@ -12,7 +12,20 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
->> Added a new getter method i.e. '_recentTransactions' returns a list of 'Transaction' that not older than seven days
+>> Started working on 'chart' widget. Highlights - for loop flavors, 'substring()', 'DateTime.now().subtract(Duration(days: index)' 
+- chart.dart >> following has been implemented so far:  
+1. Implements a constructor that accepts 'recentTransactions'   
+-- (will be passed from the instance of 'chart' widget from main.dart)  
+2. Added a 'getter' method i.e. 'groupedTransactionValues' that returns a List of 7 Map items that continas:  
+-- 1) Week 'day' for Transaction and 2) sum total for all transactions for that given day.  
+3. It returns a 'card' widget, that contains a 'Row', wherein we iterate though all the  
+-- contents/transactions in 'groupedTransactionValues' and rendering 'day' and 'amount' values for each txn.  
+- main.dart >> following has been implemented so far:  
+1. Replaced 'Container' widget with 'Chart' widget.  
+2. Passing in '_recentTransactions' as an argument to the 'Chart' widget.  
+
+
+>> Added a new getter method i.e. '_recentTransactions' that returns a list of 'Transaction' that not older than seven days
 - main.dart >> a new getter method i.e. '_recentTransactions' is added that (using the '_populateTransactions')  
 -- returns a list of 'Transaction' that not older than seven days
 
