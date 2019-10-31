@@ -1,4 +1,5 @@
 import 'package:expns_tracker/models/transaction.dart';
+import 'package:expns_tracker/widgets/chart_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -14,7 +15,7 @@ class Chart extends StatelessWidget {
     return List.generate(7, (index) {
       // Lets get the 'day' for which we are generating the 'Transaction values' depending on the index value
       final weekday = DateTime.now().subtract(Duration(days: index));
-      var dailySum = 0.0;
+      var totalDailySpending = 0.0;
 
       // Iterating through each Transaction in 'recentTransactions' where "Transaction Day = weekday"
       for (var i = 0; i < recentTransactions.length; i++) {
@@ -22,33 +23,24 @@ class Chart extends StatelessWidget {
             recentTransactions[i].date.month == weekday.month &&
             recentTransactions[i].date.year == weekday.year) {
           // summing up all the matching Transaction amount for the matching day
-          dailySum += recentTransactions[i].amount;
+          totalDailySpending += recentTransactions[i].amount;
         }
       }
-
-/*
-//      recentTransactions.forEach((txn) => {
-//            if (txn.date.day == weekday.day &&
-//                txn.date.month == weekday.month &&
-//                txn.date.year == weekday.year)
-//              {dailySum += txn.amount},
-//          });
-
-//      for(var txn in recentTransactions) {
-//        if (recentTransactions[i].date.day == weekday.day &&
-//            recentTransactions[i].date.month == weekday.month &&
-//            recentTransactions[i].date.year == weekday.year) {
-//          // summing up all the matching Transaction amount for the matching day
-//          dailySum += txn.amount;
-//        }
-//      }
- */
 
       return {
         // Below for 'day', we are only returning the first Letter of the week
         'day': DateFormat.E().format(weekday).substring(0, 1),
-        'amount': dailySum,
+        'amount': totalDailySpending,
       };
+    });
+  }
+
+  // getter 'totalWeeklySpending' will return the sum of total spending for all the seven days i.e. sum of all 'amount'
+  double get totalWeeklySpending {
+    // calling 'fold' function on a list allow the list to be converted to an other type
+    // as we need sum of all the 'amount' ('totalDailySpending') in the 'groupedTransactionValues', we are using 'fold'
+    return groupedTransactionValues.fold(0.0, (sum, listItem) {
+      return sum + listItem['amount'];
     });
   }
 
@@ -57,10 +49,23 @@ class Chart extends StatelessWidget {
     return Card(
       elevation: 5,
       margin: EdgeInsets.all(20),
-      child: Row(
-        children: groupedTransactionValues.map((txn) {
-          return Text(' ${txn['day']}: ${txn['amount']}');
-        }).toList(),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: groupedTransactionValues.map((txnData) {
+            // wrapping the 'ChartBar' in a 'Flexible', so the contents will only render in the assigned space.
+            return Flexible(
+              fit: FlexFit.tight,
+              child: ChartBar(
+                weekLabel: txnData['day'],
+                dailySpendingAmount: txnData['amount'],
+                spendingPctOfTotal:
+                    totalWeeklySpending == 0.0 ? 0.0 : (txnData['amount'] as double) / totalWeeklySpending,
+              ),
+            );
+          }).toList(),
+        ),
       ),
     );
   }

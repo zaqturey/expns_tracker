@@ -80,14 +80,6 @@ class _HomeState extends State<Home> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Chart(_recentTransactions),
-//              Container(
-//                width: double.infinity,
-//                child: Card(
-//                  elevation: 5,
-//                  color: Colors.blue,
-//                  child: Text("chart"),
-//                ),
-//              ),
               TransactionList(_populateTransactions),
               // PopulateTransactions(),
             ],

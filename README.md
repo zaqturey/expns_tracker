@@ -12,17 +12,28 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Implemented 'ChartBar' widget and refactored 'chart.dart' to use it  
+   (Highlights - 'fold()' function on List, 'FractionallySizedBox', 'Color.fromRGBO', 'Stack', 'FittedBox', 'BoxDecoration', 'Flexible' with FlexFit)  
+   (Note: As per the planned design, the 'chart' widget will render seven 'chart_bar' widget i.e. one 'chart_bar' for each Weekday.)  
+   (Note: a 'chart_bar' will render three pieces of information for a Single Day i.e. A). WeekDay Initial Letter, B). Amount Spent, c). daily spending % of The Week)  
+1. chart_bar.dart >> a new widget file is added, that will display a single BAR for a WeekDay in the Chart widget i.e.  
+   - it implements a 'Named' constructor that accepts three parameters to be rendered on UI.  
+2. chart.dart >> a lot has been refactored to use the 'chart_bar' widget instead of just displaying the text values only i.e.  
+   - a new getter 'totalWeeklySpending' has been implemented, that returns the sum total of the daily transactions for the given week.  
+   - Row widget inside the Card widget has been updated to use the 'ChartBar' widget.  
+
+
 >> Started working on 'chart' widget. Highlights - for loop flavors, 'substring()', 'DateTime.now().subtract(Duration(days: index)' 
-- chart.dart >> following has been implemented so far:  
-1. Implements a constructor that accepts 'recentTransactions'   
--- (will be passed from the instance of 'chart' widget from main.dart)  
-2. Added a 'getter' method i.e. 'groupedTransactionValues' that returns a List of 7 Map items that continas:  
--- 1) Week 'day' for Transaction and 2) sum total for all transactions for that given day.  
-3. It returns a 'card' widget, that contains a 'Row', wherein we iterate though all the  
--- contents/transactions in 'groupedTransactionValues' and rendering 'day' and 'amount' values for each txn.  
-- main.dart >> following has been implemented so far:  
-1. Replaced 'Container' widget with 'Chart' widget.  
-2. Passing in '_recentTransactions' as an argument to the 'Chart' widget.  
+1. chart.dart >> following has been implemented so far:  
+1.1. Implements a constructor that accepts 'recentTransactions'   
+     (will be passed from the instance of 'chart' widget from main.dart)  
+1.2. Added a 'getter' method i.e. 'groupedTransactionValues' that returns a List of 7 Map items that contains:  
+     A) Week 'day' for Transaction and B) sum total for all transactions for that given day.  
+     It returns a 'card' widget, that contains a 'Row', wherein we iterate though all the  
+     contents/transactions in 'groupedTransactionValues' and rendering 'day' and 'amount' values for each txn.  
+2. main.dart >> following has been implemented so far:  
+2.1. Replaced 'Container' widget with 'Chart' widget.  
+2.2. Passing in '_recentTransactions' as an argument to the 'Chart' widget.  
 
 
 >> Added a new getter method i.e. '_recentTransactions' that returns a list of 'Transaction' that not older than seven days
