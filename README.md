@@ -12,6 +12,23 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Implemented 'ListTile', now 'ListView.builder' of 'TransactionList' calls to 'TransactionListtile' instead of 'TransactionItem'
+----------------------------------------------------------------------------------------------------------------------------------
+Added:  
+****************************
+1. Added a new 'TransactionListtile' widget (i.e. a new 'transaction_listtile.dart' file)  
+- it implements a 'Named' constructor that accepts theree parameters required fos a single transaction i.e. 'txnTitle', 'txnAmount' and 'txnDate'  
+- 'TransactionListtile' returns a card widget that wraps a 'ListTile' which renders the passed in parameters for a single Transaction.  
+
+Refactored:  
+****************************
+1. transaction_list.dart -> implementation for 'ListView.builder' has been refactored to to 'TransactionListtile' instead of 'TransactionItem'  
+
+Deleted:  
+****************************
+1. transaction_item.dart -> As we going to use the ListTile to display the items in 'ListView.builder', hence deleted this file ('TransactionItem' widget)  
+
+
 >> Implemented 'ChartBar' widget and refactored 'chart.dart' to use it  
    (Highlights - 'fold()' function on List, 'FractionallySizedBox', 'Color.fromRGBO', 'Stack', 'FittedBox', 'BoxDecoration', 'Flexible' with FlexFit)  
    (Note: As per the planned design, the 'chart' widget will render seven 'chart_bar' widget i.e. one 'chart_bar' for each Weekday.)  

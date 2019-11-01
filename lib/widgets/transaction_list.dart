@@ -1,7 +1,6 @@
-import 'package:expns_tracker/widgets/transaction_item.dart';
+import 'package:expns_tracker/models/transaction.dart';
+import 'package:expns_tracker/widgets/transaction_listtile.dart';
 import 'package:flutter/material.dart';
-
-import '../models/transaction.dart';
 
 /*
 Class Objective:
@@ -24,28 +23,25 @@ class TransactionList extends StatelessWidget {
       height: double.maxFinite,
       child: transactions.isEmpty
           ? Column(
-        children: <Widget>[
-          Text(
-            'No Transaction is added yet!',
-            style: Theme
-                .of(context)
-                .textTheme
-                .title,
-          ),
-          SizedBox(height: 10),
-          Image.asset('assets/images/no_txn_available.png'),
-        ],
-      )
+              children: <Widget>[
+                Text(
+                  'No Transaction is added yet!',
+                  style: Theme.of(context).textTheme.title,
+                ),
+                SizedBox(height: 10),
+                Image.asset('assets/images/no_txn_available.png'),
+              ],
+            )
           : ListView.builder(
-        itemBuilder: (ctx, index) {
-          return TransactionItem(
-            txnTitle: transactions[index].title,
-            txnAmount: transactions[index].amount,
-            txnDate: transactions[index].date,
-          );
-        },
-        itemCount: transactions.length,
-      ),
+              itemBuilder: (ctx, index) {
+                return TransactionListtile(
+                  txnTitle: transactions[index].title,
+                  txnAmount: transactions[index].amount,
+                  txnDate: transactions[index].date,
+                );
+              },
+              itemCount: transactions.length,
+            ),
     );
   }
 }
