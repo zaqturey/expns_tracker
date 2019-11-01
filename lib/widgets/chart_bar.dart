@@ -13,9 +13,13 @@ class ChartBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        // Placing the 'dailySpendingAmount' in a 'FittedBox' so it will shrink fit its content, rather than linebreak
-        FittedBox(
-          child: Text('\$${dailySpendingAmount.toStringAsFixed(0)}'),
+        // Placing the 'FittedBox' in a 'Container' (with a Fixed height) so it wouldn't shrink
+        Container(
+          height: 20,
+          // Placing the 'dailySpendingAmount' in a 'FittedBox' so it will shrink fit its content, rather than linebreak
+          child: FittedBox(
+            child: Text('\$${dailySpendingAmount.toStringAsFixed(0)}'),
+          ),
         ),
         SizedBox(height: 4),
         Container(

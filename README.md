@@ -12,6 +12,14 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Refactoring for 'FittedBox' to always get a fixed height and reversed the List contents for 'groupedTransactionValues'
+----------------------------------------------------------------------------------------------------------------------------------
+Refactored:
+****************************
+1. chart_bar.dart -> Placed 'FittedBox' (dailySpendingAmount) in a 'Container' (with a Fixed height) so it wouldn't shrink, and hence not displacing the position of other widgets.
+2. chart.dart -> Reversed the contents of generated List i.e. 'groupedTransactionValues', so the current Day Transaction is rendered at last 
+
+
 >> Implemented 'ListTile', now 'ListView.builder' of 'TransactionList' calls to 'TransactionListtile' instead of 'TransactionItem'
 ----------------------------------------------------------------------------------------------------------------------------------
 Added:  

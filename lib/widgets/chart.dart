@@ -32,7 +32,8 @@ class Chart extends StatelessWidget {
         'day': DateFormat.E().format(weekday).substring(0, 1),
         'amount': totalDailySpending,
       };
-    });
+      // Reversing the generated List, so the current Day Transaction is rendered at last
+    }).reversed.toList();
   }
 
   // getter 'totalWeeklySpending' will return the sum of total spending for all the seven days i.e. sum of all 'amount'
