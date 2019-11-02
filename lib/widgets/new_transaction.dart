@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 /*
 Class Objective:
@@ -18,6 +19,7 @@ class NewTransaction extends StatefulWidget {
 class _NewTransactionState extends State<NewTransaction> {
   final _titleController = TextEditingController();
   final _amountController = TextEditingController();
+  DateTime _selectedTransactionDate;
 
   void _submitData() {
     // Fetching the values from the controllers
@@ -35,6 +37,23 @@ class _NewTransactionState extends State<NewTransaction> {
 
     // Closing the top most window i.e. 'showModalBottomSheet' in this case.
     Navigator.of(context).pop();
+  }
+
+  // Below method will render the 'DatePicker' and using the FUTURE method i.e. 'then()', assign the chosen date to
+  void _displayDatePicker() {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2019),
+      lastDate: DateTime.now(),
+    ).then((chosenDate) {
+      if (chosenDate == null) {
+        return;
+      }
+      setState(() {
+        _selectedTransactionDate = chosenDate;
+      });
+    });
   }
 
   @override
@@ -65,17 +84,20 @@ class _NewTransactionState extends State<NewTransaction> {
               height: 70,
               child: Row(
                 children: <Widget>[
-                  Text('# No Date Chosen!'),
+                  Expanded(
+                    child: Text(_selectedTransactionDate == null
+                        ? '# No Date Chosen!'
+                        : 'Picked Date:- ${DateFormat.yMMMd().format(_selectedTransactionDate)}'),
+                  ),
                   FlatButton(
                     textColor: Theme.of(context).primaryColor,
                     child: Text(
-                      'Chhose Date',
+                      'Choose Date',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    // TODO: implement the functionality to show the DatePicker
-                    onPressed: () {},
+                    onPressed: _displayDatePicker,
                   )
                 ],
               ),

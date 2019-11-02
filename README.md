@@ -12,6 +12,18 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> DatePicker Implementation - Continued
+----------------------------------------------------------------------------------------------------------------------------------
+Added:  
+****************************
+1. new_transaction.dart ->
+- a new 'DateTime' variable i.e. '_selectedTransactionDate' is added that will store the user selected date.
+- a new '_displayDatePicker' method has been added, that will be render the 'Calender' (using the inbuilt 'showDatePicker' widget)
+- '_displayDatePicker' calls a 'Future' i.e. once the user has selected a Date, it call a 'SetState()' function and inside that it assigns the 'chosenDate' to '_selectedTransactionDate'
+- 'onPressed' function for 'Choose Date' FlatButton i snow referring to _displayDatePicker'
+- If the user has selected a Date, 'TextField' now displays the user selected date instead of '# No Date Chosen!' text.
+
+
 >> Refactored 'new_transaction.dart' i.e. appended underscore '_' in front of private variables and functions i.e. 'titleController', 'amountController' and 'submitData'
 ----------------------------------------------------------------------------------------------------------------------------------
 
