@@ -12,6 +12,10 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Refactored 'new_transaction.dart' i.e. appended underscore '_' in front of private variables and functions i.e. 'titleController', 'amountController' and 'submitData'
+----------------------------------------------------------------------------------------------------------------------------------
+
+
 >> Started DatePicker Implementation in 'NewTransaction' widget 
 ----------------------------------------------------------------------------------------------------------------------------------
 Added:

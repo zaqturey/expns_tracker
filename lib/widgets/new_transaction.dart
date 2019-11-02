@@ -16,14 +16,13 @@ class NewTransaction extends StatefulWidget {
 }
 
 class _NewTransactionState extends State<NewTransaction> {
-  final titleController = TextEditingController();
+  final _titleController = TextEditingController();
+  final _amountController = TextEditingController();
 
-  final amountController = TextEditingController();
-
-  void submitData() {
+  void _submitData() {
     // Fetching the values from the controllers
-    final enteredTitle = titleController.text;
-    final enteredAmount = double.parse(amountController.text);
+    final enteredTitle = _titleController.text;
+    final enteredAmount = double.parse(_amountController.text);
 
     // Checking that correct values are present in the TextFields, else exit without performing 'addTxn'
     if (enteredTitle.isEmpty || enteredAmount <= 0) {
@@ -31,8 +30,8 @@ class _NewTransactionState extends State<NewTransaction> {
     }
     widget.addTxn(enteredTitle, enteredAmount);
     // Clearing the 'titleController' and 'amountController' once 'addTxn' is called
-    titleController.clear();
-    amountController.clear();
+    _titleController.clear();
+    _amountController.clear();
 
     // Closing the top most window i.e. 'showModalBottomSheet' in this case.
     Navigator.of(context).pop();
@@ -50,17 +49,17 @@ class _NewTransactionState extends State<NewTransaction> {
             TextField(
               decoration: InputDecoration(labelText: 'Title'),
               keyboardType: TextInputType.text,
-              controller: titleController,
+              controller: _titleController,
               // When calling 'onSubmitted', we need to pass the Final/Changed value to the called/anonymous Function
               // e.g. 'submitData', but since we will not be using that value, we can use an '_', which means though
               // 'submitData' accepts a 'String' parameter, but we wouldn't be using it.
-              onSubmitted: (_) => submitData(),
+              onSubmitted: (_) => _submitData(),
             ),
             TextField(
               decoration: InputDecoration(labelText: 'Amount'),
               keyboardType: TextInputType.numberWithOptions(decimal: true),
-              controller: amountController,
-              onSubmitted: (_) => submitData(),
+              controller: _amountController,
+              onSubmitted: (_) => _submitData(),
             ),
             Container(
               height: 70,
@@ -85,7 +84,7 @@ class _NewTransactionState extends State<NewTransaction> {
               child: Text('Add Transaction'),
               color: Theme.of(context).primaryColor,
               textColor: Theme.of(context).textTheme.button.color,
-              onPressed: submitData,
+              onPressed: _submitData,
             ),
           ],
         ),
