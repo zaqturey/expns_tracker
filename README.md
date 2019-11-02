@@ -12,6 +12,15 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Started DatePicker Implementation in 'NewTransaction' widget 
+----------------------------------------------------------------------------------------------------------------------------------
+Added:
+****************************
+1. new_transaction.dart -> a new 'Row' (inside a Container) has been added, that renders a 'Text' and  a 'FlatButton' widget
+2. main.dart -> Added new 'TextStyle' for 'button' widget in the 'ThemeData', so it can be used Globally.
+3. new_transaction.dart -> Applied the newly added button color to 'RaisedButton'
+
+
 >> Refactoring for 'FittedBox' to always get a fixed height and reversed the List contents for 'groupedTransactionValues'
 ----------------------------------------------------------------------------------------------------------------------------------
 Refactored:

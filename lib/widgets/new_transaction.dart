@@ -62,12 +62,29 @@ class _NewTransactionState extends State<NewTransaction> {
               controller: amountController,
               onSubmitted: (_) => submitData(),
             ),
-            RaisedButton(
-              child: Text(
-                'Add Transaction',
-                style: TextStyle(color: Colors.blue.shade500),
+            Container(
+              height: 70,
+              child: Row(
+                children: <Widget>[
+                  Text('# No Date Chosen!'),
+                  FlatButton(
+                    textColor: Theme.of(context).primaryColor,
+                    child: Text(
+                      'Chhose Date',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    // TODO: implement the functionality to show the DatePicker
+                    onPressed: () {},
+                  )
+                ],
               ),
-              highlightColor: Colors.pink[100],
+            ),
+            RaisedButton(
+              child: Text('Add Transaction'),
+              color: Theme.of(context).primaryColor,
+              textColor: Theme.of(context).textTheme.button.color,
               onPressed: submitData,
             ),
           ],

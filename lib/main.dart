@@ -23,6 +23,8 @@ class MyApp extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
+              // Adding Global Button theme
+              button: TextStyle(color: Colors.white),
             ),
       ),
       home: Home(),
