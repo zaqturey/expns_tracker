@@ -40,8 +40,13 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   final List<Transaction> _populateTransactions = [];
 
-  void _addNewTransaction(String txnTitle, double txnAmount) {
-    final newTxn = Transaction(id: DateTime.now().toString(), title: txnTitle, amount: txnAmount, date: DateTime.now());
+  void _addNewTransaction(String txnTitle, double txnAmount, DateTime chosenTxnDate) {
+    final newTxn = Transaction(
+      id: DateTime.now().toString(),
+      title: txnTitle,
+      amount: txnAmount,
+      date: chosenTxnDate,
+    );
 
     setState(() {
       _populateTransactions.add(newTxn);

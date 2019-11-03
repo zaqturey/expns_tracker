@@ -21,16 +21,19 @@ class _NewTransactionState extends State<NewTransaction> {
   final _amountController = TextEditingController();
   DateTime _selectedTransactionDate;
 
+  // '_submitData' will get data from _startAddNewTransaction('showModalBottomSheet') and
+  // using 'Widget' (which works as a bridge between 'NewTransaction' and '_NewTransactionState' class)
+  // will call 'widget.addTxn' to add a
   void _submitData() {
     // Fetching the values from the controllers
     final enteredTitle = _titleController.text;
     final enteredAmount = double.parse(_amountController.text);
 
-    // Checking that correct values are present in the TextFields, else exit without performing 'addTxn'
-    if (enteredTitle.isEmpty || enteredAmount <= 0) {
+    // Checking that correct values are present in the input Fields, else exit without performing 'addTxn'
+    if (enteredTitle.isEmpty || enteredAmount <= 0 || _selectedTransactionDate == null) {
       return;
     }
-    widget.addTxn(enteredTitle, enteredAmount);
+    widget.addTxn(enteredTitle, enteredAmount, _selectedTransactionDate);
     // Clearing the 'titleController' and 'amountController' once 'addTxn' is called
     _titleController.clear();
     _amountController.clear();

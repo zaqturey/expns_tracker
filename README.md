@@ -12,6 +12,17 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Now 'addTxn' will use the user selected date (from datePicker) instead of default current date.  
+----------------------------------------------------------------------------------------------------------------------------------
+Added:  
+****************************  
+1. new_transaction.dart ->  
+-  '_submitData()' -> Added an NULL check for '_selectedTransactionDate'  
+- 'widget.addTxn' -> now it accepts a new argument i.e. '_selectedTransactionDate'  
+2. main.dart ->  
+- '_addNewTransaction' -> now this method accepts a new parameter i.e. 'chosenTxnDate' and uses it for 'date' field instead of using the default 'DateTime.now()'  
+
+
 >> DatePicker Implementation - Continued
 ----------------------------------------------------------------------------------------------------------------------------------
 Added:  
