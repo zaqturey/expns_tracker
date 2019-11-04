@@ -12,8 +12,9 @@ Class Objective:
 
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
+  final Function deleteTxn;
 
-  TransactionList(this.transactions);
+  TransactionList(this.transactions, this.deleteTxn);
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +36,11 @@ class TransactionList extends StatelessWidget {
           : ListView.builder(
               itemBuilder: (ctx, index) {
                 return TransactionListtile(
+                  txnId: transactions[index].id,
                   txnTitle: transactions[index].title,
                   txnAmount: transactions[index].amount,
                   txnDate: transactions[index].date,
+                  deleteTxn: deleteTxn,
                 );
               },
               itemCount: transactions.length,

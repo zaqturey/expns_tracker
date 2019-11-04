@@ -61,6 +61,12 @@ class _HomeState extends State<Home> {
         });
   }
 
+  void _deleteTransaction(String id) {
+    setState(() {
+      return _populateTransactions.removeWhere((txn) => txn.id == id);
+    });
+  }
+
   // Getter method that (using the '_populateTransactions') returns a list of 'Transaction' that not older than seven days
   List<Transaction> get _recentTransactions {
     return _populateTransactions.where((txn) {
@@ -87,7 +93,10 @@ class _HomeState extends State<Home> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Chart(_recentTransactions),
-              TransactionList(_populateTransactions),
+              // Note: Since 'IconButton' (delete) is rendered inside the '_populateTransactions',
+              // and will be called from inside the '_populateTransactions', therefore, we must pass
+              // '_deleteTransaction' as an argument to the 'TransactionList'
+              TransactionList(_populateTransactions, _deleteTransaction),
               // PopulateTransactions(),
             ],
           ),

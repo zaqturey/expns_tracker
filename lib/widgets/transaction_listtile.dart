@@ -8,11 +8,20 @@ Class Objective:
 */
 
 class TransactionListtile extends StatelessWidget {
+  final String txnId;
   final String txnTitle;
   final double txnAmount;
   final DateTime txnDate;
+  final Function deleteTxn;
 
-  TransactionListtile({@required this.txnTitle, @required this.txnAmount, @required this.txnDate});
+  TransactionListtile(
+      {@required this.txnId,
+      @required this.txnTitle,
+      @required this.txnAmount,
+      @required this.txnDate,
+      @required this.deleteTxn});
+
+//  TransactionListtile({@required this.txnTitle, @required this.txnAmount, @required this.txnDate});
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +43,13 @@ class TransactionListtile extends StatelessWidget {
           style: Theme.of(context).textTheme.title,
         ),
         subtitle: Text(DateFormat.yMMMd().format(txnDate)),
+        trailing: IconButton(
+          icon: Icon(Icons.delete),
+          // default 'errorColor' is red, but if want a different color,
+          // you can explicitly define in the 'ThemeData' of 'main.dart'
+          color: Theme.of(context).errorColor,
+          onPressed: () => deleteTxn(txnId),
+        ),
       ),
     );
   }

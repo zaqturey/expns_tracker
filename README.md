@@ -12,6 +12,24 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Added a Trailing 'trailing: IconButton' in 'transaction_listtile.dart', and a '_deleteTransaction()' method in the 'main.dart'  
+----------------------------------------------------------------------------------------------------------------------------------
+Added:  
+****************************
+1. transaction_listtile.dart ->  
+- A 'trailing: IconButton' has been added to the 'ListTile'  
+- Two new variables has been added to the class i.e. 'String txnId' and 'Function deleteTxn'  
+- Constructor 'TransactionListtile' now takes two more '@required' parameters and assign those to the newly added parameters i.e. 'this.txnId' and 'this.deleteTxn'    
+- 'onPressed' property of IconButton' of the 'ListTile' now refers to an 'anonymous' function that calls the 'deleteTxn(txnId)' function. 
+2. transaction_list.dart ->  
+- Now 'TransactionList' constructor accepts a new parameter i.e. 'deleteTxn' (this is Function parameter)  
+- Two new parameters will be passed into the 'TransactionListtile' widget i.e. 'txnId' and 'deleteTxn'  
+(Note: These parameters will be required by the 'TransactionListtile' widget to delete a given transaction)  
+3. main.dart ->  
+- '_deleteTransaction(String id)' -> A new method has been added that will delete a Transaction (inside the 'setState') from the '_populateTransactions' list, depending on the the txn 'id' parameter.   
+- 'TransactionList' -> now this widget passes an additional argument i.e. '_deleteTransaction'  
+
+
 >> Now 'addTxn' will use the user selected date (from datePicker) instead of default current date.  
 ----------------------------------------------------------------------------------------------------------------------------------
 Added:  
