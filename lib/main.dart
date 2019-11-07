@@ -1,21 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import './models/transaction.dart';
 import './widgets/chart.dart';
 import './widgets/new_transaction.dart';
 import './widgets/transaction_list.dart';
 
-void main() {
-  // Using 'setPreferredOrientations' to only allow the 'portraitUP' and 'portraitDown' orientations.
-  SystemChrome.setPreferredOrientations(
-    [
-      DeviceOrientation.portraitUp,
-      DeviceOrientation.portraitDown,
-    ],
-  );
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -84,6 +74,8 @@ class _HomeState extends State<Home> {
     }).toList();
   }
 
+  bool _showChart = false;
+
   @override
   Widget build(BuildContext context) {
     // Moved 'AppBar' declaration into a variable, so can get its height using 'pre.h'
@@ -110,17 +102,29 @@ class _HomeState extends State<Home> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Container(
-              height: (MediaQuery.of(context).size.height - appBarHeight - statusBarHeight) * 0.3,
-              child: Chart(_recentTransactions),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: <Widget>[
+                Text("Show Chart"),
+                Switch(
+                  value: _showChart,
+                  onChanged: (val) {
+                    setState(() {
+                      _showChart = val;
+                    });
+                  },
+                ),
+              ],
             ),
-            // Note: Since 'IconButton' (delete) is rendered inside the '_populateTransactions',
-            // and will be called from inside the '_populateTransactions', therefore, we must pass
-            // '_deleteTransaction' as an argument to the 'TransactionList'
-            Container(
-              height: (MediaQuery.of(context).size.height - appBarHeight - statusBarHeight) * 0.7,
-              child: TransactionList(_populateTransactions, _deleteTransaction),
-            ),
+            _showChart
+                ? Container(
+                    height: (MediaQuery.of(context).size.height - appBarHeight - statusBarHeight) * 0.3,
+                    child: Chart(_recentTransactions),
+                  )
+                : Container(
+                    height: (MediaQuery.of(context).size.height - appBarHeight - statusBarHeight) * 0.7,
+                    child: TransactionList(_populateTransactions, _deleteTransaction),
+                  ),
             // PopulateTransactions(),
           ],
         ),

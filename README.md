@@ -12,6 +12,22 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Introducing 'Switch' widget to toggle between 'Chart' Widget and 'ListView' widget
+----------------------------------------------------------------------------------------------------------------------------------
+Added
+****************************
+1. Main.dart ->
+- Added a new 'bool' in the '_HomeState' class i.e. '_showChart' and initialized it with 'false'
+- Added a new 'Row' that contains a Text("Show Chart") and a 'Switch' widget.
+- Switch has a default value of '_HomeState' i.e. false.
+- The 'onChanged' of 'Switch', take the new value, calls the 'SetState' which in-turn calls the '_showChart' ternary expression.
+-_showChart' (if true) will display the 'Chart' widget, otherwise the 'TransactionList' widget.
+
+Removed
+****************************
+- Usage of 'SystemChrome.setPreferredOrientations' for only portrait orientation.
+
+
 >> Disable 'LandScape' orientation at App level
 ----------------------------------------------------------------------------------------------------------------------------------
 (Imp:  SystemChrome.setPreferredOrientations, DeviceOrientation.portraitUp, DeviceOrientation.portraitDown)
