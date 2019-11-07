@@ -118,7 +118,8 @@ class _HomeState extends State<Home> {
             ),
             _showChart
                 ? Container(
-                    height: (MediaQuery.of(context).size.height - appBarHeight - statusBarHeight) * 0.3,
+                    // If true, as only 'Chart' widget will be displayed , changing its from 30% to 70%
+                    height: (MediaQuery.of(context).size.height - appBarHeight - statusBarHeight) * 0.7,
                     child: Chart(_recentTransactions),
                   )
                 : Container(

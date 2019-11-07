@@ -12,6 +12,16 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Changed default height for 'chart' widget, Added LayoutBuilder that returns the container that holds the 'No Txn available' image
+----------------------------------------------------------------------------------------------------------------------------------
+Added
+****************************
+1. Main.dart ->
+- Changed default height for 'chart' widget from 30% to 70% (this is because now we display one widget at a time)  
+2. transaction_list.dart ->  
+- Place the 'Column' widget (that holds the image) inside a 'LayoutBuilder' , so image height can be assigned dynamically.  
+
+
 >> Introducing 'Switch' widget to toggle between 'Chart' Widget and 'ListView' widget
 ----------------------------------------------------------------------------------------------------------------------------------
 Added
