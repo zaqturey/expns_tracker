@@ -12,6 +12,15 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Introducing 'LayoutBuilder' - These are helpful in applying 'Constraints' to the SubWidgets
+----------------------------------------------------------------------------------------------------------------------------------
+Updated:  
+****************************  
+1. chart_bar.dart ->  
+- Now the 'ChartBar' returns a LayoutBuilder, which in-turn will return a 'Column' widget  
+- Assigned dynamically calculated height to the subwidgets of 'Column' widget i.e. depending on the 'Constraints' height.  
+
+
 >> StatusBar Height: Removed/Subtracted 'StatusBar' height while performing dynamic height calculation using MediaQuery
 ----------------------------------------------------------------------------------------------------------------------------------
 Updated:  
