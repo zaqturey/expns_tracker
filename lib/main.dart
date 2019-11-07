@@ -76,7 +76,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    // Mover 'AppBar' declaration into a variable, so can get its height using 'pre.h'
+    // Moved 'AppBar' declaration into a variable, so can get its height using 'pre.h'
     final appBar = AppBar(
       backgroundColor: Colors.red,
       title: Text('Expns Tracker'),
@@ -88,27 +88,31 @@ class _HomeState extends State<Home> {
       ],
     );
 
+    // Fetching the height of 'StatusBar' using MediaQuery
+    final double statusBarHeight = MediaQuery.of(context).padding.top;
+
+    // Fetching the height of 'AppBar' using its 'preferredSize' property
+    final double appBarHeight = appBar.preferredSize.height;
+
     return Scaffold(
       appBar: appBar,
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              Container(
-                height: (MediaQuery.of(context).size.height - appBar.preferredSize.height) * 0.4,
-                child: Chart(_recentTransactions),
-              ),
-              // Note: Since 'IconButton' (delete) is rendered inside the '_populateTransactions',
-              // and will be called from inside the '_populateTransactions', therefore, we must pass
-              // '_deleteTransaction' as an argument to the 'TransactionList'
-              Container(
-                height: (MediaQuery.of(context).size.height - appBar.preferredSize.height) * 0.6,
-                child: TransactionList(_populateTransactions, _deleteTransaction),
-              ),
-              // PopulateTransactions(),
-            ],
-          ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            Container(
+              height: (MediaQuery.of(context).size.height - appBarHeight - statusBarHeight) * 0.3,
+              child: Chart(_recentTransactions),
+            ),
+            // Note: Since 'IconButton' (delete) is rendered inside the '_populateTransactions',
+            // and will be called from inside the '_populateTransactions', therefore, we must pass
+            // '_deleteTransaction' as an argument to the 'TransactionList'
+            Container(
+              height: (MediaQuery.of(context).size.height - appBarHeight - statusBarHeight) * 0.7,
+              child: TransactionList(_populateTransactions, _deleteTransaction),
+            ),
+            // PopulateTransactions(),
+          ],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,

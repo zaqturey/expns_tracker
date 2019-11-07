@@ -12,7 +12,19 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
->> AppBar Height: Removed/Subtracted 'AppBar' height while performing dynamic height calculation using MediaQuery
+>> StatusBar Height: Removed/Subtracted 'StatusBar' height while performing dynamic height calculation using MediaQuery
+----------------------------------------------------------------------------------------------------------------------------------
+Updated:  
+****************************
+ 1. main.dart ->
+- Fetched 'StatusBar' height and assigned it to a final variable i.e. 'statusBarHeight' 
+- Also assigned 'appBar' height to a final variable i.e. 'appBarHeight'
+- Chart's Container height calculation -> Subtracted 'appBar' and 'StatusBar' height from the Screen height then assigned (40% of it) to the 'Container'.
+- TransactionList's Container height calculation - > Subtracted 'appBar' and 'StatusBar' height from the Screen height then assigned (40% of it) to the 'Container'.
+- Also removed the 'SafeArea' Widget to avoid any type for scrolling.
+
+
+>> AppBar Height: Removed/Subtracted 'AppBar' height while performing dynamic height calculation using its 'preferredSize' property'
 ----------------------------------------------------------------------------------------------------------------------------------
 Updated:  
 ****************************
