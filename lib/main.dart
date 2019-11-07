@@ -1,11 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import './models/transaction.dart';
 import './widgets/chart.dart';
 import './widgets/new_transaction.dart';
 import './widgets/transaction_list.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  // Using 'setPreferredOrientations' to only allow the 'portraitUP' and 'portraitDown' orientations.
+  SystemChrome.setPreferredOrientations(
+    [
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ],
+  );
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   @override

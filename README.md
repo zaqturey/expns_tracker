@@ -12,6 +12,16 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Disable 'LandScape' orientation at App level
+----------------------------------------------------------------------------------------------------------------------------------
+(Imp:  SystemChrome.setPreferredOrientations, DeviceOrientation.portraitUp, DeviceOrientation.portraitDown)
+Updated:  
+****************************
+1. Main.dart ->
+- Added a new method call inside the Main() method i.e. 'SystemChrome.setPreferredOrientations'
+- To disable 'landscape orientation', also set its DeviceOrientation values to 'portraitUp' and' portraitDown' 
+
+
 >> Introducing 'LayoutBuilder' - These are helpful in applying 'Constraints' to the SubWidgets
 ----------------------------------------------------------------------------------------------------------------------------------
 Updated:  
