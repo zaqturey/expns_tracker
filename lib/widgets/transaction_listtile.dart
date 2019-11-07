@@ -21,8 +21,6 @@ class TransactionListtile extends StatelessWidget {
       @required this.txnDate,
       @required this.deleteTxn});
 
-//  TransactionListtile({@required this.txnTitle, @required this.txnAmount, @required this.txnDate});
-
   @override
   Widget build(BuildContext context) {
     return Card(

@@ -47,25 +47,29 @@ class Chart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      margin: EdgeInsets.all(20),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: groupedTransactionValues.map((txnData) {
-            // wrapping the 'ChartBar' in a 'Flexible', so the contents will only render in the assigned space.
-            return Flexible(
-              fit: FlexFit.tight,
-              child: ChartBar(
-                weekLabel: txnData['day'],
-                dailySpendingAmount: txnData['amount'],
-                spendingPctOfTotal:
-                    totalWeeklySpending == 0.0 ? 0.0 : (txnData['amount'] as double) / totalWeeklySpending,
-              ),
-            );
-          }).toList(),
+    return Container(
+      // Getting the Actual Screen height and allocating 40% of that to the 'Container'
+      height: MediaQuery.of(context).size.height * 0.4,
+      child: Card(
+        elevation: 5,
+        margin: EdgeInsets.all(20),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: groupedTransactionValues.map((txnData) {
+              // wrapping the 'ChartBar' in a 'Flexible', so the contents will only render in the assigned space.
+              return Flexible(
+                fit: FlexFit.tight,
+                child: ChartBar(
+                  weekLabel: txnData['day'],
+                  dailySpendingAmount: txnData['amount'],
+                  spendingPctOfTotal:
+                      totalWeeklySpending == 0.0 ? 0.0 : (txnData['amount'] as double) / totalWeeklySpending,
+                ),
+              );
+            }).toList(),
+          ),
         ),
       ),
     );

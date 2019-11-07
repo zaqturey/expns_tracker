@@ -18,10 +18,9 @@ class TransactionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: Use ListView Builder to avoid 'RenderFlex overflowed' error
     return Container(
-      // 'double.maxFinite' will allow to take the max available height to the Container
-      height: double.maxFinite,
+      // Getting the Actual Screen height and allocating 60% of that to the 'Container'
+      height: MediaQuery.of(context).size.height * 0.6,
       child: transactions.isEmpty
           ? Column(
               children: <Widget>[

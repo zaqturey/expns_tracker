@@ -12,6 +12,17 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> MediaQuery: Retrieved screen height dynamically and assigned it % to the widgets. 
+----------------------------------------------------------------------------------------------------------------------------------
+Added:  
+****************************  
+1. chart.dart ->  
+- Wrapped the root 'Card' widget in a 'Container'.  
+- Dynamically calculated the Screen Height using 'MediaQuery' and assigned (40%) to the root 'Container'.  
+2. transaction_list.dart ->  
+- Dynamically calculated the Screen Height using 'MediaQuery' and assigned (60%) to the root 'Container'.  
+
+
 >> Added a Trailing 'trailing: IconButton' in 'transaction_listtile.dart', and a '_deleteTransaction()' method in the 'main.dart'  
 ----------------------------------------------------------------------------------------------------------------------------------
 Added:  
