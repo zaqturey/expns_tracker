@@ -18,32 +18,28 @@ class TransactionList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // Getting the Actual Screen height and allocating 60% of that to the 'Container'
-      height: MediaQuery.of(context).size.height * 0.6,
-      child: transactions.isEmpty
-          ? Column(
-              children: <Widget>[
-                Text(
-                  'No Transaction is added yet!',
-                  style: Theme.of(context).textTheme.title,
-                ),
-                SizedBox(height: 10),
-                Image.asset('assets/images/no_txn_available.png'),
-              ],
-            )
-          : ListView.builder(
-              itemBuilder: (ctx, index) {
-                return TransactionListtile(
-                  txnId: transactions[index].id,
-                  txnTitle: transactions[index].title,
-                  txnAmount: transactions[index].amount,
-                  txnDate: transactions[index].date,
-                  deleteTxn: deleteTxn,
-                );
-              },
-              itemCount: transactions.length,
-            ),
-    );
+    return transactions.isEmpty
+        ? Column(
+            children: <Widget>[
+              Text(
+                'No Transaction is added yet!',
+                style: Theme.of(context).textTheme.title,
+              ),
+              SizedBox(height: 10),
+              Image.asset('assets/images/no_txn_available.png'),
+            ],
+          )
+        : ListView.builder(
+            itemBuilder: (ctx, index) {
+              return TransactionListtile(
+                txnId: transactions[index].id,
+                txnTitle: transactions[index].title,
+                txnAmount: transactions[index].amount,
+                txnDate: transactions[index].date,
+                deleteTxn: deleteTxn,
+              );
+            },
+            itemCount: transactions.length,
+          );
   }
 }

@@ -12,6 +12,24 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> AppBar Height: Removed/Subtracted 'AppBar' height while performing dynamic height calculation using MediaQuery
+----------------------------------------------------------------------------------------------------------------------------------
+Updated:  
+****************************
+1. main.dart ->
+- Wrapped 'Chart' widget in a 'Container'
+- Fetched Screen Height using 'MediaQuery', deducted 'appbar' height from it and then assigned (40%) to the 'Container'.
+- Wrapped 'Chart' widget in a 'Container'
+- Fetched Screen Height using 'MediaQuery', deducted 'appbar' height from it and then assigned (60%) to the 'Container'.
+Refactored:  
+****************************
+2. chart.dart ->
+- Removed root 'Container' widget and now it only returns a 'Card' (as height for this is taken care in the 'main.dart' )
+3. transaction_list.dart ->
+- Removed root 'Container' widget and now it only returns the output from the ternary expression i.e. either a 'Column' 
+or a 'ListView.builder' (as height for the outcome widget is taken care in the 'main.dart' )
+
+
 >> MediaQuery: Retrieved screen height dynamically and assigned it % to the widgets. 
 ----------------------------------------------------------------------------------------------------------------------------------
 Added:  
