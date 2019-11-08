@@ -12,6 +12,14 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Displaying different 'trailing' icons depending on the device orientation
+----------------------------------------------------------------------------------------------------------------------------------
+Added
+****************************
+1. transaction_listtile.dart ->
+- for trailing Icon, checking the device orientation using 'MediaQuery' and displaying 'FlatButton.icon' with 'Label' in case of 'Landscape' otherwise only the 'IconButton'.
+
+
 >> Fixed - ModalBottomSheet visibility Issue when Soft keyboard is displayed
 ----------------------------------------------------------------------------------------------------------------------------------
 Added

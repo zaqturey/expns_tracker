@@ -41,13 +41,21 @@ class TransactionListtile extends StatelessWidget {
           style: Theme.of(context).textTheme.title,
         ),
         subtitle: Text(DateFormat.yMMMd().format(txnDate)),
-        trailing: IconButton(
-          icon: Icon(Icons.delete),
-          // default 'errorColor' is red, but if want a different color,
-          // you can explicitly define in the 'ThemeData' of 'main.dart'
-          color: Theme.of(context).errorColor,
-          onPressed: () => deleteTxn(txnId),
-        ),
+        // Displaying different 'trailing' icons depending on the device orientation
+        trailing: MediaQuery.of(context).orientation == Orientation.landscape
+            ? FlatButton.icon(
+                onPressed: () => deleteTxn(txnId),
+                icon: Icon(Icons.delete),
+                label: Text("Delete"),
+                textColor: Theme.of(context).errorColor,
+              )
+            : IconButton(
+                icon: Icon(Icons.delete),
+                // default 'errorColor' is red, but if want a different color,
+                // you can explicitly define in the 'ThemeData' of 'main.dart'
+                color: Theme.of(context).errorColor,
+                onPressed: () => deleteTxn(txnId),
+              ),
       ),
     );
   }
