@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import './models/transaction.dart';
@@ -87,17 +88,33 @@ class _HomeState extends State<Home> {
     // Checking if device is in Landscape mode or not and then assigning it to a bool i.e. 'isLandscape'
     final isLandscape = mediaQuery.orientation == Orientation.landscape;
 
-    // Moved 'AppBar' declaration into a variable, so can get its height using 'pre.h'
-    final appBar = AppBar(
-      backgroundColor: Colors.red,
-      title: Text('Expns Tracker'),
-      actions: <Widget>[
-        IconButton(
-          icon: Icon(Icons.add),
-          onPressed: () => _startAddNewTransaction(context),
-        ),
-      ],
-    );
+    // Moved 'appBar' initialization into a variable, so can get its height using 'pre.h'
+    // Explicitly defining the Type for 'appBar' as Dart is unable to infer its type after using the
+    // 'CupertinoNavigationBar' and hence unable to call 'preferredSize.height' on appBar
+    final PreferredSizeWidget appBar = Platform.isIOS
+        ? CupertinoNavigationBar(
+            // Setting the 'AppBar' title using CupertinoNavigationBar's  'middle' property
+            middle: Text('Expns Tracker'),
+            trailing: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                GestureDetector(
+                  child: Icon(CupertinoIcons.add),
+                  onTap: () => _startAddNewTransaction(context),
+                )
+              ],
+            ),
+          )
+        : AppBar(
+            backgroundColor: Colors.red,
+            title: Text('Expns Tracker'),
+            actions: <Widget>[
+              IconButton(
+                icon: Icon(Icons.add),
+                onPressed: () => _startAddNewTransaction(context),
+              ),
+            ],
+          );
 
     // Fetching the height of 'StatusBar' using MediaQuery
     final double statusBarHeight = mediaQuery.padding.top;
@@ -117,9 +134,10 @@ class _HomeState extends State<Home> {
       child: TransactionList(_populateTransactions, _deleteTransaction),
     );
 
-    return Scaffold(
-      appBar: appBar,
-      body: SingleChildScrollView(
+    // Moved 'body' widget initialization into a variable,
+    // Also wrapped, 'SingleChildScrollView' widget in a 'SafeArea' widget to avoid 'Notch' area overlapping
+    final pageBody = SafeArea(
+      child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
@@ -128,7 +146,11 @@ class _HomeState extends State<Home> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  Text("Show Chart"),
+                  // Adding 'style' widget to use 'textTheme.title' so it remain same while rendering on iOS
+                  Text(
+                    "Show Chart",
+                    style: Theme.of(context).textTheme.title,
+                  ),
                   Switch.adaptive(
                     activeColor: Theme.of(context).accentColor,
                     value: _showChart,
@@ -152,14 +174,21 @@ class _HomeState extends State<Home> {
           ],
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      // As FAB is not an iOS specific widget, hence rendering an empty 'Container' for iOS platform
-      floatingActionButton: Platform.isIOS
-          ? Container()
-          : FloatingActionButton(
+    );
+
+    return Platform.isIOS
+        ? CupertinoPageScaffold(
+            navigationBar: appBar,
+            child: pageBody,
+          )
+        : Scaffold(
+            appBar: appBar,
+            body: pageBody,
+            floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+            floatingActionButton: FloatingActionButton(
               child: Icon(Icons.add),
               onPressed: () => _startAddNewTransaction(context),
             ),
-    );
+          );
   }
 }

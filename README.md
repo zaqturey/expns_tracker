@@ -12,6 +12,19 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Introducing 'Cupertino' widgets
+----------------------------------------------------------------------------------------------------------------------------------
+Refactored/Added
+****************************
+1. main.dart ->
+- Moved the declaration of 'body' widget into a new variable i.e. 'pageBody' and now 'body' widget is rendering 'pageBody'
+- Now the root Return statement uses a 'TEREX' to display either the 'CupertinoPageScaffold' or 'Scaffold' depending on the Platfrom.
+- 'CupertinoPageScaffold' -> Implemented 'navigationBar' and 'child' properties and corresponding values
+- appBar -> Updated to show Platform specific AppBar contents.
+- pageBody -> wrapped 'SingleChildScrollView' widget in a 'SafeArea' widget to avoid 'Notch' area overlapping
+- Scaffold -> Removed Platform specific check for FAB, as now we have a dedicated 'CupertinoPageScaffold' for iOS
+
+
 >> Adaptive UI implementation for 'Switch' widget and applied a Platform specific check for FAB
 ----------------------------------------------------------------------------------------------------------------------------------
 Added
@@ -27,8 +40,8 @@ Added
 Refactoring
 ****************************
 1. main.dart ->
-- Moved the 'Container' that renders the 'Chart' widget into a new variabe i.e. 'txnChartWidget'
-- Moved the 'Container' that renders the 'TransactionList' widget into a new variabe i.e. 'txnListWidget'
+- Moved the 'Container' that renders the 'Chart' widget into a new variable i.e. 'txnChartWidget'
+- Moved the 'Container' that renders the 'TransactionList' widget into a new variable i.e. 'txnListWidget'
 
 Added
 ****************************
