@@ -12,6 +12,18 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Added and used a new 'AdaptiveFlatButton' class/file  
+----------------------------------------------------------------------------------------------------------------------------------
+Refactored/Added
+****************************
+1. adaptive_flat_button.dart ->
+- Added a new STL class that accepts two parameters of type 'String' and 'Function' 
+- It check the platform and them implements the Platform specific FlatButton using the the passed in parameters. 
+2. new_transaction.dart ->
+- For 'Choose Date' button, Replaced the platform specific check and the corresponding 'FlatButton' implementations for iOS and Android with 'AdaptiveFlatButton'. 
+
+
+
 >> 'Cupertino' implementation for 'FlatButton'
 ----------------------------------------------------------------------------------------------------------------------------------
 Refactored/Added
