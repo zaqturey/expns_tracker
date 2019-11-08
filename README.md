@@ -12,6 +12,16 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Adaptive UI implementation for 'Switch' widget and applied a Platform specific check for FAB
+----------------------------------------------------------------------------------------------------------------------------------
+Added
+****************************
+1. main.dart -> 
+- Changed 'Switch' to 'Switch.adaptive', so the widget render as per the platform i.e. iOS or Android.
+- Also applied Theme's accentColor as 'activeColor' to the Switch widget.
+- FAB will not be rendered if Platform is iOS, instead an empty container will be displayed.  
+
+
 >> Displaying 'Switch' widget depending on the device orientation, and corresponding refactoring.
 ----------------------------------------------------------------------------------------------------------------------------------
 Refactoring
