@@ -74,10 +74,17 @@ class _HomeState extends State<Home> {
     }).toList();
   }
 
+  // Bool variable '_showChart' to store the value from 'Switch' widget, initializing as 'false'
   bool _showChart = false;
 
   @override
   Widget build(BuildContext context) {
+    // Creating and instance of 'MediaQuery', so we don't need to instantiate it multiple times/places
+    final mediaQuery = MediaQuery.of(context);
+
+    // Checking if device is in Landscape mode or not and then assigning it to a bool i.e. 'isLandscape'
+    final isLandscape = mediaQuery.orientation == Orientation.landscape;
+
     // Moved 'AppBar' declaration into a variable, so can get its height using 'pre.h'
     final appBar = AppBar(
       backgroundColor: Colors.red,
@@ -91,10 +98,22 @@ class _HomeState extends State<Home> {
     );
 
     // Fetching the height of 'StatusBar' using MediaQuery
-    final double statusBarHeight = MediaQuery.of(context).padding.top;
+    final double statusBarHeight = mediaQuery.padding.top;
 
     // Fetching the height of 'AppBar' using its 'preferredSize' property
     final double appBarHeight = appBar.preferredSize.height;
+
+    final txnChartWidget = Container(
+      height: isLandscape
+          ? (mediaQuery.size.height - appBarHeight - statusBarHeight) * 0.7
+          : (mediaQuery.size.height - appBarHeight - statusBarHeight) * 0.3,
+      child: Chart(_recentTransactions),
+    );
+
+    final txnListWidget = Container(
+      height: (mediaQuery.size.height - appBarHeight - statusBarHeight) * 0.7,
+      child: TransactionList(_populateTransactions, _deleteTransaction),
+    );
 
     return Scaffold(
       appBar: appBar,
@@ -102,31 +121,31 @@ class _HomeState extends State<Home> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Text("Show Chart"),
-                Switch(
-                  value: _showChart,
-                  onChanged: (val) {
-                    setState(() {
-                      _showChart = val;
-                    });
-                  },
-                ),
-              ],
-            ),
-            _showChart
-                ? Container(
-                    // If true, as only 'Chart' widget will be displayed , changing its from 30% to 70%
-                    height: (MediaQuery.of(context).size.height - appBarHeight - statusBarHeight) * 0.7,
-                    child: Chart(_recentTransactions),
-                  )
-                : Container(
-                    height: (MediaQuery.of(context).size.height - appBarHeight - statusBarHeight) * 0.7,
-                    child: TransactionList(_populateTransactions, _deleteTransaction),
+            // Render the below 'Row' widget only if the device is in Landscape mode
+            if (isLandscape)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Text("Show Chart"),
+                  Switch(
+                    value: _showChart,
+                    onChanged: (val) {
+                      setState(() {
+                        _showChart = val;
+                      });
+                    },
                   ),
-            // PopulateTransactions(),
+                ],
+              ),
+            if (isLandscape)
+              _showChart ? txnChartWidget : txnListWidget,
+            if (!isLandscape)
+              Column(
+                children: <Widget>[
+                  txnChartWidget,
+                  txnListWidget,
+                ],
+              )
           ],
         ),
       ),

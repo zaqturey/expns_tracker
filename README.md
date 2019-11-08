@@ -12,6 +12,25 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Displaying 'Switch' widget depending on the device orientation, and corresponding refactoring.
+----------------------------------------------------------------------------------------------------------------------------------
+Refactoring
+****************************
+1. main.dart ->
+- Moved the 'Container' that renders the 'Chart' widget into a new variabe i.e. 'txnChartWidget'
+- Moved the 'Container' that renders the 'TransactionList' widget into a new variabe i.e. 'txnListWidget'
+
+Added
+****************************
+1. main.dart ->
+- Added a Bool variable i.e. 'isLandscape' to keep to check if device is in Landscape mode or not (using mediaQuery)
+- Added a Bool variable i.e. '_showChart', that will be used whether the 'txnChartWidget' shud be displayed or not (depending on the value of 'isLandscape')
+- Row containing the 'Switch' for '_showChart' will only be displayed for Landscape mode only.
+- In case of 'Landscape', only one widget will be displayed i.e. 'txnChartWidget' OR 'txnListWidget' (using '_showChart')
+- In case of 'Portrait', both 'txnChartWidget' AND 'txnListWidget' will be displayed.
+- In 'txnChartWidget', height for 'Chart' widget will be calculated dynamically depending on the device Orientation. 
+
+
 >> Displaying different 'trailing' icons depending on the device orientation
 ----------------------------------------------------------------------------------------------------------------------------------
 Added
