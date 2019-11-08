@@ -12,6 +12,13 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> 'Cupertino' implementation for 'FlatButton'
+----------------------------------------------------------------------------------------------------------------------------------
+Refactored/Added
+****************************
+1. new_transaction.dart ->
+- CupertinoButton -> Added a 'CupertinoButton' for 'Choose Date', now either a 'FlatButton' or  'CupertinoButton' will be rendered depending on the Platform.
+
 >> Introducing 'Cupertino' widgets
 ----------------------------------------------------------------------------------------------------------------------------------
 Refactored/Added
