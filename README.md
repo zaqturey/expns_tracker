@@ -12,6 +12,15 @@ samples, guidance on mobile development, and a full API reference.
 
 ## Commits History (newest on the top)
 
+>> Fixed - ModalBottomSheet visibility Issue when Soft keyboard is displayed
+----------------------------------------------------------------------------------------------------------------------------------
+Added
+****************************
+1. new_transaction.dart ->
+- Wrapped the root 'Card' widget in a 'SingleChildScrollView'.
+- For Bottom padding >> Added the addtional padding for the 'space required by soft keyboard' by using 'MediaQuery'
+
+
 >> Changed default height for 'chart' widget, Added LayoutBuilder that returns the container that holds the 'No Txn available' image
 ----------------------------------------------------------------------------------------------------------------------------------
 Added

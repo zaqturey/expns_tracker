@@ -61,57 +61,65 @@ class _NewTransactionState extends State<NewTransaction> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 5,
-      child: Container(
-        padding: EdgeInsets.all(10.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-            TextField(
-              decoration: InputDecoration(labelText: 'Title'),
-              keyboardType: TextInputType.text,
-              controller: _titleController,
-              // When calling 'onSubmitted', we need to pass the Final/Changed value to the called/anonymous Function
-              // e.g. 'submitData', but since we will not be using that value, we can use an '_', which means though
-              // 'submitData' accepts a 'String' parameter, but we wouldn't be using it.
-              onSubmitted: (_) => _submitData(),
-            ),
-            TextField(
-              decoration: InputDecoration(labelText: 'Amount'),
-              keyboardType: TextInputType.numberWithOptions(decimal: true),
-              controller: _amountController,
-              onSubmitted: (_) => _submitData(),
-            ),
-            Container(
-              height: 70,
-              child: Row(
-                children: <Widget>[
-                  Expanded(
-                    child: Text(_selectedTransactionDate == null
-                        ? '# No Date Chosen!'
-                        : 'Picked Date:- ${DateFormat.yMMMd().format(_selectedTransactionDate)}'),
-                  ),
-                  FlatButton(
-                    textColor: Theme.of(context).primaryColor,
-                    child: Text(
-                      'Choose Date',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    onPressed: _displayDatePicker,
-                  )
-                ],
+    return SingleChildScrollView(
+      child: Card(
+        elevation: 5,
+        child: Container(
+          padding: EdgeInsets.only(
+            top: 10,
+            right: 10,
+            left: 10,
+            // This will add the padding for the 'space required by soft keyboard + 10' to the 'Container' contents
+            bottom: MediaQuery.of(context).viewInsets.bottom + 10,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: <Widget>[
+              TextField(
+                decoration: InputDecoration(labelText: 'Title'),
+                keyboardType: TextInputType.text,
+                controller: _titleController,
+                // When calling 'onSubmitted', we need to pass the Final/Changed value to the called/anonymous Function
+                // e.g. 'submitData', but since we will not be using that value, we can use an '_', which means though
+                // 'submitData' accepts a 'String' parameter, but we wouldn't be using it.
+                onSubmitted: (_) => _submitData(),
               ),
-            ),
-            RaisedButton(
-              child: Text('Add Transaction'),
-              color: Theme.of(context).primaryColor,
-              textColor: Theme.of(context).textTheme.button.color,
-              onPressed: _submitData,
-            ),
-          ],
+              TextField(
+                decoration: InputDecoration(labelText: 'Amount'),
+                keyboardType: TextInputType.numberWithOptions(decimal: true),
+                controller: _amountController,
+                onSubmitted: (_) => _submitData(),
+              ),
+              Container(
+                height: 70,
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Text(_selectedTransactionDate == null
+                          ? '# No Date Chosen!'
+                          : 'Picked Date:- ${DateFormat.yMMMd().format(_selectedTransactionDate)}'),
+                    ),
+                    FlatButton(
+                      textColor: Theme.of(context).primaryColor,
+                      child: Text(
+                        'Choose Date',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      onPressed: _displayDatePicker,
+                    )
+                  ],
+                ),
+              ),
+              RaisedButton(
+                child: Text('Add Transaction'),
+                color: Theme.of(context).primaryColor,
+                textColor: Theme.of(context).textTheme.button.color,
+                onPressed: _submitData,
+              ),
+            ],
+          ),
         ),
       ),
     );
